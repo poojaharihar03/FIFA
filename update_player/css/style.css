@@ -76,7 +76,7 @@ span{
   }
   .button--bubble {
 	position: relative;
-	z-index: 2;
+	z-index: 5;
 	color: white;
 	background: none;
   }

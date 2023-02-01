@@ -30,8 +30,6 @@ $spid = $_POST["pid"];
     <li><a href="../../../update_player.html">Update</a></li>
     <li><a href="../../../../insert_player/insert_new_player.html">Insert</a></li>
     <li><a href="../../../../database/database.php">Database</a></li>
-     <!-- <li><a href="../../../../sreport/project_report.html">Report</a></li> -->
-          <li><a href="../../../../procedures/procedures.html">Procedures</a></li>
           <li><a href="../../../../about/about.html">About</a></li>
 </ul>
 

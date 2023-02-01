@@ -25,8 +25,6 @@
           <li><a href="../update_player/update_player.html">Update</a></li>
           <li><a href="../insert_player/insert_new_player.html">Insert</a></li>
           <li><a href="database.php">Database</a></li>
-            <!-- <li><a href="..//project_report.html">Report</a></li>
-          <li><a href="../procedures/procedures.html">Procedures</a></li> -->
           <li><a href="../about/about.html">About</a></li>
         </ul>  <br>      
 <?php
@@ -219,9 +217,12 @@ if ($result->num_rows >0 ) {
     <table cellpadding="0" cellspacing="0" border="0">
       <thead>
         <tr>
+        <th>CLUB_ID</th>
           <th>PLAYER ID</th>
           <th>CLUB</th>
           <th>PREFERRED POSITION</th>
+          <th>MANAGER NAME</th>
+          <th>LEAGUE</th>
         </tr>
       </thead>
     </table>
@@ -230,15 +231,18 @@ if ($result->num_rows >0 ) {
 <table cellpadding="0" cellspacing="0" border="0">
 <!--<tbody>-->
 <?php
-$sql = "SELECT * FROM other_details ORDER BY id";
+$sql = "SELECT * FROM other_details ORDER BY club_id";
 $result = $conn->query($sql);
 if ($result->num_rows >0 ) {
     while($row = $result->fetch_assoc()) { 
         echo "<tbody>";
         echo "<tr>";
+        echo "<td>" .$row["club_id"]. "</td>";
          echo "<td>" .$row["player_id"]. "</td>";
           echo "<td>" .$row["club"]. "</td>";
           echo "<td>" .$row["preferred_position"]. "</td>";
+          echo "<td>" .$row["manager_name"]. "</td>";
+          echo "<td>" .$row["league_name"]. "</td>";
          echo "</tr>";
         echo "</tbody>";
     }
