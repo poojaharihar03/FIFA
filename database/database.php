@@ -118,7 +118,6 @@ if ($result->num_rows >0 ) {
 <!-- </tbody>-->
 </table>
 </div><br>
-      
   <h1>PLAYER EARNINGS</h1>
   <div class="tbl-header">
     <table cellpadding="0" cellspacing="0" border="0">
@@ -217,7 +216,6 @@ if ($result->num_rows >0 ) {
     <table cellpadding="0" cellspacing="0" border="0">
       <thead>
         <tr>
-        <th>CLUB_ID</th>
           <th>PLAYER ID</th>
           <th>CLUB</th>
           <th>PREFERRED POSITION</th>
@@ -235,9 +233,20 @@ $sql = "SELECT * FROM other_details ORDER BY club_id";
 $result = $conn->query($sql);
 if ($result->num_rows >0 ) {
     while($row = $result->fetch_assoc()) { 
+      if(
+        $row["manager_name"]==null
+      ){
+        $q = "SELECT manager_name,league_name FROM other_details where club= \"". $row['club']."\"";
+        $res = $conn->query($q);
+        if ($result->num_rows >0 ) {
+          while($inner_row = $res->fetch_assoc()) { 
+            $row['manager_name'] = $inner_row['manager_name'];
+            $row['league_name'] = $inner_row['league_name'];
+          }
+        }
+      }
         echo "<tbody>";
         echo "<tr>";
-        echo "<td>" .$row["club_id"]. "</td>";
          echo "<td>" .$row["player_id"]. "</td>";
           echo "<td>" .$row["club"]. "</td>";
           echo "<td>" .$row["preferred_position"]. "</td>";
